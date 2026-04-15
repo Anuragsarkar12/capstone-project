@@ -1,5 +1,3 @@
-
-
 import csv
 import random
 import os
@@ -142,13 +140,13 @@ def generate_email(first_name: str, last_name: str, customer_id: int) -> str:
 def inject_dirty_email(email: str) -> str:
     """Corrupt an email to test validation logic."""
     corruptions = [
-        email.replace("@", ""),           
+        email.replace("@", ""),          
         email.replace("@", "@@"),        
-        email.replace(".", ""),           
+        email.replace(".", ""),          
         f" {email}",                      
-        "not_an_email",                   
+        "not_an_email",                  
         "",                                
-        email.replace("@", " at "),       
+        email.replace("@", " at "),      
     ]
     return random.choice(corruptions)
 
@@ -177,7 +175,7 @@ def randomize_case(text: str) -> str:
 def generate_customers() -> List[Dict[str, Any]]:
     """
     Generate customer records with deliberate quality issues.
-    
+   
     Issues injected:
     - ~2% duplicate customer_ids (same ID, slightly different data)
     - ~3% invalid email formats
@@ -188,37 +186,37 @@ def generate_customers() -> List[Dict[str, Any]]:
     """
     print(f"Generating {NUM_CUSTOMERS} customers...")
     customers = []
-    
+   
     for i in range(1, NUM_CUSTOMERS + 1):
         first_name = random.choice(FIRST_NAMES)
         last_name = random.choice(LAST_NAMES)
         email = generate_email(first_name, last_name, i)
-        
-        
+       
+       
         if random.random() < 0.03:
             email = inject_dirty_email(email)
-        
-        
+       
+       
         first_name = add_whitespace_noise(first_name)
         last_name = add_whitespace_noise(last_name)
-        
-        
+       
+       
         first_name = randomize_case(first_name)
         last_name = randomize_case(last_name)
-        
+       
         signup_date = random_date(SIGNUP_START, SIGNUP_END)
-        
-        
+       
+       
         if random.random() < 0.01:
             future_start = datetime(2026, 1, 1)
             future_end = datetime(2027, 12, 31)
             signup_date = random_date(future_start, future_end)
-        
-        
+       
+       
         country = random.choices(COUNTRIES, weights=COUNTRY_WEIGHTS, k=1)[0]
         if random.random() < 0.01:
             country = ""
-        
+       
         customers.append({
             "customer_id": i,
             "first_name": first_name,
@@ -227,23 +225,23 @@ def generate_customers() -> List[Dict[str, Any]]:
             "signup_date": signup_date,
             "country": country
         })
-    
-    
+   
+   
     num_duplicates = int(NUM_CUSTOMERS * 0.02)
     for _ in range(num_duplicates):
         original = random.choice(customers[:NUM_CUSTOMERS])
         duplicate = original.copy()
-        
+       
         duplicate["email"] = generate_email(
             duplicate["first_name"].strip(),
             duplicate["last_name"].strip(),
             duplicate["customer_id"]
         )
         customers.append(duplicate)
-    
-    
+   
+   
     random.shuffle(customers)
-    
+   
     print(f"  → {len(customers)} rows (including {num_duplicates} duplicates)")
     return customers
 
@@ -251,7 +249,7 @@ def generate_customers() -> List[Dict[str, Any]]:
 def generate_products() -> List[Dict[str, Any]]:
     """
     Generate product records with deliberate quality issues.
-    
+   
     Issues injected:
     - ~2% negative or zero prices
     - ~3% case inconsistencies in category names
@@ -260,36 +258,36 @@ def generate_products() -> List[Dict[str, Any]]:
     """
     print(f"Generating {NUM_PRODUCTS} products...")
     products = []
-    
+   
     product_id = 1
-    
+   
     products_per_category = NUM_PRODUCTS // len(CATEGORIES)
     remainder = NUM_PRODUCTS % len(CATEGORIES)
-    
+   
     for idx, category in enumerate(CATEGORIES):
         count = products_per_category + (1 if idx < remainder else 0)
         prefixes = PRODUCT_PREFIXES[category]
         items = PRODUCT_ITEMS[category]
         price_min, price_max = PRICE_RANGES[category]
-        
+       
         for _ in range(count):
             prefix = random.choice(prefixes)
             item = random.choice(items)
             product_name = f"{prefix} {item}"
-            
-            
+           
+           
             product_name = add_whitespace_noise(product_name)
-            
-            
+           
+           
             price = round(random.uniform(price_min, price_max), 2)
-            
-            
+           
+           
             if random.random() < 0.02:
                 price = random.choice([0, -1.00, -price, -0.01, 0.00])
-            
-            
+           
+           
             cat_name = randomize_case(category)
-            
+           
             products.append({
                 "product_id": product_id,
                 "product_name": product_name,
@@ -297,7 +295,7 @@ def generate_products() -> List[Dict[str, Any]]:
                 "price": price
             })
             product_id += 1
-    
+   
     print(f"  → {len(products)} rows")
     return products
 
@@ -305,7 +303,7 @@ def generate_products() -> List[Dict[str, Any]]:
 def generate_orders(customer_ids: List[int]) -> List[Dict[str, Any]]:
     """
     Generate order records with deliberate quality issues.
-    
+   
     Issues injected:
     - ~1.5% NULL order dates
     - ~1% invalid statuses
@@ -314,36 +312,36 @@ def generate_orders(customer_ids: List[int]) -> List[Dict[str, Any]]:
     """
     print(f"Generating {NUM_ORDERS} orders...")
     orders = []
-    
-    
+   
+   
     status_weights = [15, 20, 50, 15]  
-    
+   
     for i in range(1, NUM_ORDERS + 1):
         customer_id = random.choice(customer_ids)
         order_date = random_date(ORDER_START, ORDER_END)
         status = random.choices(VALID_STATUSES, weights=status_weights, k=1)[0]
-        
+       
        
         if random.random() < 0.015:
             order_date = ""
-        
-        
+       
+       
         if random.random() < 0.02 and order_date != "":
             future_start = datetime(2026, 6, 1)
             future_end = datetime(2027, 12, 31)
             order_date = random_date(future_start, future_end)
-        
-        
+       
+       
         if random.random() < 0.01:
             status = random.choice(INVALID_STATUSES)
-        
+       
         orders.append({
             "order_id": i,
             "customer_id": customer_id,
             "order_date": order_date,
             "status": status
         })
-    
+   
     print(f"  → {len(orders)} rows")
     return orders
 
@@ -351,7 +349,7 @@ def generate_orders(customer_ids: List[int]) -> List[Dict[str, Any]]:
 def generate_order_items(order_ids: List[int], product_ids: List[int]) -> List[Dict[str, Any]]:
     """
     Generate order item records with deliberate quality issues.
-    
+   
     Issues injected:
     - ~1% orphan records (referencing non-existent order_ids)
     - ~0.5% zero or negative quantities
@@ -360,31 +358,31 @@ def generate_order_items(order_ids: List[int], product_ids: List[int]) -> List[D
     print("Generating order items...")
     order_items = []
     item_id = 1
-    
+   
     max_order_id = max(order_ids)
-    
+   
     for order_id in order_ids:
-        
+       
         num_items = random.choices(
             [1, 2, 3, 4, 5],
             weights=[35, 30, 20, 10, 5],
             k=1
         )[0]
-        
-        
+       
+       
         selected_products = random.sample(product_ids, min(num_items, len(product_ids)))
-        
+       
         for product_id in selected_products:
             quantity = random.choices(
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 weights=[30, 25, 15, 10, 8, 5, 3, 2, 1, 1],
                 k=1
             )[0]
-            
-            
+           
+           
             if random.random() < 0.005:
                 quantity = random.choice([0, -1, -2])
-            
+           
             order_items.append({
                 "order_item_id": item_id,
                 "order_id": order_id,
@@ -392,8 +390,8 @@ def generate_order_items(order_ids: List[int], product_ids: List[int]) -> List[D
                 "quantity": quantity
             })
             item_id += 1
-    
-    
+   
+   
     num_orphans = int(len(order_items) * 0.01)
     for _ in range(num_orphans):
         orphan_order_id = max_order_id + random.randint(1, 1000)
@@ -404,9 +402,9 @@ def generate_order_items(order_ids: List[int], product_ids: List[int]) -> List[D
             "quantity": random.randint(1, 5)
         })
         item_id += 1
-    
+   
     random.shuffle(order_items)
-    
+   
     print(f"  → {len(order_items)} rows (including {num_orphans} orphans)")
     return order_items
 
@@ -430,49 +428,49 @@ def main():
     print("RETAIL DATASET GENERATOR")
     print("=" * 60)
     print()
-    
-    
+   
+   
     customers = generate_customers()
     customer_ids = list(set(c["customer_id"] for c in customers))
-    
+   
    
     products = generate_products()
     product_ids = [p["product_id"] for p in products]
-    
-    
+   
+   
     orders = generate_orders(customer_ids)
     order_ids = [o["order_id"] for o in orders]
-    
-    
+   
+   
     order_items = generate_order_items(order_ids, product_ids)
-    
+   
     print()
     print("Writing CSV files...")
-    
+   
     write_csv(
         os.path.join(OUTPUT_DIR, "customers.csv"),
         customers,
         ["customer_id", "first_name", "last_name", "email", "signup_date", "country"]
     )
-    
+   
     write_csv(
         os.path.join(OUTPUT_DIR, "products.csv"),
         products,
         ["product_id", "product_name", "category", "price"]
     )
-    
+   
     write_csv(
         os.path.join(OUTPUT_DIR, "orders.csv"),
         orders,
         ["order_id", "customer_id", "order_date", "status"]
     )
-    
+   
     write_csv(
         os.path.join(OUTPUT_DIR, "order_items.csv"),
         order_items,
         ["order_item_id", "order_id", "product_id", "quantity"]
     )
-    
+   
     print()
     print("=" * 60)
     print("DATA GENERATION COMPLETE")
