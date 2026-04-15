@@ -1,0 +1,151 @@
+product_id,product_name,category,price
+1,Pro Mouse,Electronics,77.44
+2,HD Monitor Light,Electronics,36.42
+3,Bluetooth Headphones,Electronics,225.44
+4,Bluetooth Mouse,Electronics,263.59
+5,Pro Camera,Electronics,285.31
+6,Pro Speaker,Electronics,159.32
+7, HD Speaker,Electronics,44.88
+8,Wireless Monitor Light,Electronics,268.61
+9,Smart Headphones,Electronics,10.22
+10,Wireless Charger,Electronics,101.16
+11,Pro Camera,Electronics,131.8
+12,Bluetooth Speaker,Electronics,210.88
+13,Portable Headphones,Electronics,181.92
+14,Classic Sweater,Clothing,129.38
+15,Premium Shirt,Clothing,89.34
+16,Classic Sweater,Clothing,65.85
+17,Premium Shirt,Clothing,86.37
+18,Formal Polo Shirt,Clothing,140.53
+19,Cotton Vest,Clothing,149.07
+20,Slim Fit Sweater,Clothing,-1.0
+21,Slim Fit T-Shirt,Clothing,147.73
+22,Vintage Shorts,Clothing,99.61
+23,Classic T-Shirt,Clothing,43.58
+24, Casual Hoodie,Clothing,95.69
+25,Casual Vest,Clothing,91.04
+26,Classic Vest,Clothing,69.39
+27,Ceramic Toaster,Home & Kitchen,189.2
+28,Ceramic Spatula Set,Home & Kitchen,174.72
+29,Stainless Steel Knife Set,Home & Kitchen,76.02
+30,Silicone Kettle,Home & Kitchen,47.78
+31, Stainless Steel Mixing Bowl,HOME & KITCHEN,48.22
+32,Non-Stick Kettle,Home & Kitchen,192.56
+33,Non-Stick Blender,Home & Kitchen,143.06
+34,Wooden Blender,Home & Kitchen,103.05
+35,Silicone Cutting Board,Home & Kitchen,28.67
+36,Non-Stick Pan,Home & Kitchen,35.56
+37,Bamboo Toaster,Home & Kitchen,12.55
+38,Glass Pan,Home & Kitchen,150.91
+39,Glass Blender,Home & Kitchen,103.22
+40,Mastering Cloud Computing,Books,21.98
+41,Introduction to System Design,Books,35.2
+42,Advanced Data Science,Books,32.67
+43,The Art of Cloud Computing,Books,37.11
+44,Mastering Algorithms,Books,49.56
+45,Mastering System Design,Books,13.75
+46,Complete Guide to Data Science,Books,11.97
+47,The Art of Python Programming,Books,16.23
+48,Advanced Python Programming,Books,38.45
+49,The Art of Data Science,Books,34.66
+50,Advanced Python Programming,Books,43.28
+51,The Art of Machine Learning,Books,23.1
+52,The Art of Data Science,Books,10.71
+53,All-Weather Compass,Sports & Outdoors,14.74
+54,Heavy Duty Yoga Mat,Sports & Outdoors,89.98
+55,All-Weather Backpack,Sports & Outdoors,11.52
+56,Foldable Resistance Band,Sports & Outdoors,102.05
+57,Pro Series Compass,Sports & Outdoors,22.12
+58,Ultra Light Yoga Mat,Sports & Outdoors,14.39
+59,Foldable Yoga Mat,Sports & Outdoors,143.74
+60,  Compact Flashlight,Sports & Outdoors,13.18
+61,Ultra Light Yoga Mat,Sports & Outdoors,148.28
+62,Foldable Tent,Sports & Outdoors,73.69
+63,All-Weather Compass,Sports & Outdoors,103.42
+64,Ultra Light Jump Rope,Sports & Outdoors,57.02
+65,Ultra Light Yoga Mat,Sports & Outdoors,179.89
+66,Organic Body Lotion,Beauty & Personal Care,56.99
+67,Organic Face Mask,Beauty & Personal Care,54.8
+68,Anti-Aging Body Lotion,Beauty & Personal Care,47.5
+69,Hydrating Face Mask,Beauty & Personal Care,54.19
+70,Organic Face Wash,Beauty & Personal Care,23.95
+71,Hydrating Conditioner,Beauty & Personal Care,13.5
+72,Gentle Face Mask,Beauty & Personal Care,64.07
+73,Natural Shampoo,Beauty & Personal Care,75.23
+74,Anti-Aging Face Mask  ,Beauty & Personal Care,22.76
+75,Gentle Conditioner,Beauty & Personal Care,65.99
+76,Organic Lip Balm  ,Beauty & Personal Care,36.41
+77,Organic Face Wash,Beauty & Personal Care,74.32
+78, Organic Moisturizer,Beauty & Personal Care,52.93
+79,Educational Dollhouse,Toys & Games,10.1
+80,Creative Action Figure,Toys & Games,40.19
+81,Creative Action Figure,Toys & Games,49.88
+82,Educational RC Car,Toys & Games,9.09
+83,Creative Board Game,Toys & Games,43.88
+84,Educational Chess Set,Toys & Games,82.31
+85,Classic Chess Set,Toys & Games,16.17
+86,Strategy RC Car,TOYS & GAMES,89.38
+87,Interactive Action Figure,Toys & Games,85.41
+88,Strategy RC Car,Toys & Games,25.87
+89,Interactive RC Car,Toys & Games,83.82
+90,Strategy Puzzle Set,Toys & Games,63.41
+91,Sugar-Free Olive Oil,Grocery,35.42
+92,Farm Fresh Honey,Grocery,17.95
+93,Farm Fresh Trail Mix,Grocery,25.69
+94,Organic Rice,Grocery,24.0
+95,Whole Grain Coffee Beans,Grocery,29.54
+96,Farm Fresh Tea Collection,Grocery,16.91
+97,Premium Honey,Grocery,27.37
+98,Organic Coffee Beans,Grocery,39.66
+99,Whole Grain Trail Mix,Grocery,20.81
+100,  Organic Pasta  ,Grocery,23.68
+101,Sugar-Free Rice,Grocery,7.37
+102,Sugar-Free Granola,Grocery,33.01
+103,Premium Stapler,Office Supplies,25.23
+104,  Heavy Duty File Folders  ,Office Supplies,40.42
+105,Professional Notebook,Office Supplies,15.38
+106,Recycled File Folders,Office Supplies,58.96
+107,Professional Desk Organizer,Office Supplies,9.31
+108,Premium Notebook,OFFICE SUPPLIES,12.06
+109,Ergonomic Notebook,Office Supplies,20.94
+110,Heavy Duty File Folders,Office Supplies,16.95
+111,Heavy Duty Pen Set,Office Supplies,7.08
+112,Compact Desk Organizer,Office Supplies,13.2
+113,Professional Notebook,Office Supplies,41.81
+114,Heavy Duty Sticky Notes,Office Supplies,13.4
+115,Heavy Duty Dash Cam,Automotive,77.1
+116,Anti-Slip Seat Cover,Automotive,65.42
+117,Heavy Duty Jump Starter,Automotive,25.93
+118,Quick-Release Air Freshener,Automotive,9.01
+119,Anti-Slip Jump Starter,Automotive,23.5
+120,Anti-Slip Seat Cover,Automotive,28.39
+121,Anti-Slip Jump Starter,Automotive,66.98
+122,Quick-Release Floor Mats,Automotive,72.58
+123,All-Season Seat Cover,Automotive,101.96
+124,Anti-Slip Air Freshener,Automotive,26.14
+125,Anti-Slip Jump Starter,Automotive,137.25
+126,All-Season Wiper Blades,Automotive,93.11
+127,Natural Fish Oil,Health & Wellness,55.15
+128,Advanced Vitamin D,Health & Wellness,20.9
+129,Pure First Aid Kit,Health & Wellness,53.34
+130,  Natural Probiotic  ,hEALTH & wELLNESS,9.25
+131,Essential Protein Powder,Health & Wellness,24.49
+132,Pure Multivitamin,Health & Wellness,55.3
+133,Essential Thermometer,Health & Wellness,10.7
+134,  Pure Fish Oil  ,Health & Wellness,57.63
+135,Daily First Aid Kit,Health & Wellness,45.66
+136,Natural Fish Oil,Health & Wellness,34.44
+137,Natural Zinc Tablets,Health & Wellness,40.19
+138,Natural Thermometer,Health & Wellness,49.42
+139,Interactive Grooming Kit,Pet Supplies,10.72
+140,Durable Treat Jar,Pet Supplies,12.24
+141, Interactive Treat Jar,Pet Supplies,17.61
+142,Interactive Collar,Pet Supplies,18.62
+143,Natural Leash,Pet Supplies,72.69
+144,Natural Dog Food,Pet Supplies,48.18
+145,Premium Food Bowl,Pet Supplies,52.47
+146, Natural Cat Toy,Pet Supplies,63.04
+147,Natural Treat Jar,Pet Supplies,41.26
+148,Comfortable Grooming Kit,Pet Supplies,5.22
+149,Interactive Dog Food,Pet Supplies,16.7
+150,Organic Collar,Pet Supplies,18.6
