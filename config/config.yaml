@@ -1,0 +1,86 @@
+databricks:
+  catalog: "capstone_project_catalog"
+
+  schemas:
+    raw: "raw"
+    bronze: "bronze"
+    silver: "silver"
+    gold: "gold"
+    logs: "logs"
+
+  raw_data_path: "/Volumes/capstone_project_catalog/raw/raw_volume/"
+
+datasets:
+  customers:
+    filename: "customers.csv"
+    bronze_table: "bronze_customers"
+    silver_table: "silver_customers"
+    primary_key: "customer_id"
+
+  products:
+    filename: "products.csv"
+    bronze_table: "bronze_products"
+    silver_table: "silver_products"
+    primary_key: "product_id"
+
+  orders:
+    filename: "orders.csv"
+    bronze_table: "bronze_orders"
+    silver_table: "silver_orders"
+    primary_key: "order_id"
+    valid_statuses: ["CREATED", "SHIPPED", "DELIVERED", "CANCELLED"]
+
+  order_items:
+    filename: "order_items.csv"
+    bronze_table: "bronze_order_items"
+    silver_table: "silver_order_items"
+    primary_key: "order_item_id"
+
+gold:
+  fact_sales: "fact_sales"
+  dim_customer: "dim_customer"
+  dim_product: "dim_product"
+  partition_column: "order_date"
+  fact_filter_status: "DELIVERED"
+
+data_quality:
+  null_threshold_pct: 1.0
+  duplicate_threshold_pct: 0.5
+  reconciliation_tolerance_pct: 15.0
+  log_table: "dq_logs"
+
+snowflake:
+  account_secret: "snowflake/account"
+  user_secret: "snowflake/user"
+  password_secret: "snowflake/password"
+  warehouse: "COMPUTE_WH"
+  database: "CAPSTONE_DB"
+  schema: "PUBLIC"
+  role: "ACCOUNTADMIN"
+
+airflow:
+  dag:
+    dag_id: "retail_data_pipeline"
+    owner: "capstone_project_team_9"
+    retries: 2
+    retry_delay_minutes: 5
+    start_date: "2024-01-01"
+    schedule_interval: null
+    catchup: false
+    max_active_runs: 1
+    tags: ["retail", "databricks", "etl"]
+
+  databricks:
+    conn_id: "databricks_default"
+    cluster_id: "0415-095555-1c70m60w"
+
+  notebooks:
+    bronze: "/Workspace/Users/avranilset@gmail.com/capstone-project/src/Ingestion"
+    silver: "/Workspace/Users/sarkaranurag2321@gmail.com/capstone-project/src/silver_transform"
+    gold: "/Workspace/Users/sarkaranurag2321@gmail.com/capstone-project/src/gold_transform"
+    dq: "/Workspace/Users/sarkaranurag2321@gmail.com/capstone-project/src/data_quality"
+    snowflake: "/Workspace/Users/sarkaranurag2321@gmail.com/capstone-project/src/snowflake_load"
+
+  dq_layers:
+    silver: "silver"
+    gold: "gold"
